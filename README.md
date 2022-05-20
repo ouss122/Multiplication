@@ -1,3 +1,1 @@
 # Multiplication
-# Multiplication
-# Multiplication
