@@ -55,12 +55,12 @@ function checkans(){
                co.style.backgroundColor=ba;
                clearInterval(op);  
                answer=question();
-
+               result.textContent=""; 
+                s="";
            }
             a++;
         },500)
-        result.textContent=""; 
-        s="";
+     
     }else{
         let a=0;
         let ba=  "rgb(54, 54, 54)";
@@ -75,11 +75,12 @@ function checkans(){
            if (a===5){ 
                co.style.backgroundColor=ba;
                clearInterval(op);
+               result.textContent=""; 
+               s="";
            }
             a++;
         },500)
-        result.textContent="";
-        s="";
+
     }
 
 }
@@ -99,8 +100,9 @@ input.addEventListener("click",event => {
     }
 })
 
-document.addEventListener("keydown",event =>{
+document.addEventListener("keydown",function press(event){
     if (event.key==="Enter"){
+        event.preventDefault(); 
         checkans();
     }
     else if (event.key ==="Backspace"){
