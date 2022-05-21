@@ -38,7 +38,22 @@ let z = y*x;
 ques.textContent=x+"x"+y
 return z;
 }
+function press(event) {  
+     
+    if (event.target.textContent==="Check"){
+        input.removeEventListener("click",press);
+        checkans();
+    }  
+    else if (event.target.textContent==="CLR"){
+      s=s.slice(0,s.length -1);
+      result.textContent=s;
 
+    }
+   else if (event.target.className !== "input" ){
+    s=s+ event.target.textContent;
+    result.textContent=s;
+    } 
+}
 function checkans(){
     if (result.textContent==answer){
         let a=0;
@@ -57,6 +72,7 @@ function checkans(){
                answer=question();
                result.textContent=""; 
                 s="";
+                input.addEventListener("click", press);
            }
             a++;
         },500)
@@ -77,6 +93,8 @@ function checkans(){
                clearInterval(op);
                result.textContent=""; 
                s="";
+               input.addEventListener("click", press);
+
            }
             a++;
         },500)
@@ -85,20 +103,7 @@ function checkans(){
 
 }
 let answer=question();
-input.addEventListener("click",event => {
-    if (event.target.textContent==="Check"){
-        checkans();
-    }  
-    else if (event.target.textContent==="CLR"){
-      s=s.slice(0,s.length -1);
-      result.textContent=s;
-
-    }
-   else if (event.target.className !== "input" ){
-    s=s+ event.target.textContent;
-    result.textContent=s;
-    }
-})
+input.addEventListener("click",press)
 
 document.addEventListener("keydown",function press(event){
     if (event.key==="Enter"){
